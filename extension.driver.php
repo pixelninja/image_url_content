@@ -4,7 +4,7 @@
 	 * @package image_url_content_type
 	 */
 
-	class Extension_Image_URL_Content_Type extends Extension {
+	class Extension_Image_URL_Content extends Extension {
 		public function getSubscribedDelegates() {
 			return array(
 				array(
