@@ -4,15 +4,15 @@
 	 * @package content_field
 	 */
 	class ImageURLContentType implements ContentType {
+		public function getName() {
+			return __('Image URL');
+		}
+
 		public function appendSettingsHeaders(HTMLPage $page) {
 
 		}
 
 		public function appendSettingsInterface(XMLElement $wrapper, $field_name, StdClass $settings = null, MessageStack $errors) {
-			$legend = new XMLElement('legend');
-			$legend->setValue(__('Image URL'));
-			$wrapper->appendChild($legend);
-
 			// Default size
 			$group = new XMLElement('div');
 			$group->setAttribute('class', 'group');
@@ -68,19 +68,6 @@
 			}
 
 			$wrapper->appendChild($list);
-
-			// Enable this content type:
-			$input = Widget::Input("{$field_name}[enabled]", 'yes', 'checkbox');
-
-			if ($settings->{'enabled'} == 'yes') {
-				$input->setAttribute('checked', 'checked');
-			}
-
-			$wrapper->appendChild(Widget::Label(
-				__('%s Enable the Image URL content type', array(
-					$input->generate()
-				))
-			));
 		}
 
 		public function sanitizeSettings($settings) {
@@ -120,16 +107,6 @@
 		}
 
 		public function appendPublishInterface(XMLElement $wrapper, $field_name, StdClass $settings, StdClass $data, MessageStack $errors, $entry_id = null) {
-			$header = new XMLElement('header');
-			$header->addClass('main');
-			$header->appendChild(
-				new XMLElement('strong', __('Image URL'))
-			);
-			$wrapper->appendChild($header);
-
-			$content = new XMLElement('div');
-			$wrapper->appendChild($content);
-
 			// URL:
 			$label = Widget::Label(__('Image URL'));
 			$input = Widget::Input(
@@ -146,12 +123,12 @@
 				$label = Widget::wrapFormElementWithError($label, $errors->url);
 			}
 
-			$content->appendChild($label);
+			$wrapper->appendChild($label);
 
 			// Alt text:
 			$group = new XMLElement('div');
 			$group->setAttribute('class', 'group');
-			$content->appendChild($group);
+			$wrapper->appendChild($group);
 
 			$label = Widget::Label(__('Alternative text'));
 			$label->appendChild(new XMLElement('i', __('Optional')));
