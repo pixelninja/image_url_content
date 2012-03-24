@@ -18,7 +18,7 @@
 			$group->setAttribute('class', 'group');
 
 			$values = array(
-				array('auto', false, __('Auto Resize')),
+				array('auto', false, __('Automatic')),
 				array('small', false, __('Small Box')),
 				array('medium', false, __('Medium Box')),
 				array('large', false, __('Large Box')),
