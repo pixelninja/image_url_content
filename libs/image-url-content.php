@@ -92,7 +92,7 @@
 			}
 
 			if (isset($settings->{'available-styles'}) === false) {
-				$settings->{'available-styles'} = 'Default';
+				$settings->{'available-styles'} = __('Thumbnail') . ',' . __('Normal');
 			}
 
 			return $settings;

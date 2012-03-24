@@ -16,7 +16,7 @@
 		}
 
 		public function appendContentType(&$context) {
-			require_once __DIR__ . '/libs/image-url-content-type.php';
+			require_once __DIR__ . '/libs/image-url-content.php';
 
 			$context['items']->{'image-url'} = new ImageURLContentType();
 		}
